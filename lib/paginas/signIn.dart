@@ -63,6 +63,7 @@ class _SignInState extends State<SignIn> {
               TextField(
                 enableIMEPersonalizedLearning: false,
                 textCapitalization: TextCapitalization.characters,
+                style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   //contentPadding: EdgeInsets.all(20.0), //Padding
                   //Fondo
@@ -105,6 +106,7 @@ class _SignInState extends State<SignIn> {
                 enableIMEPersonalizedLearning: false,
                 obscureText: true,
                 textCapitalization: TextCapitalization.characters,
+                style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Color.fromRGBO(33, 46, 54, 1),

@@ -63,6 +63,7 @@ class _SignUpState extends State<SignUp> {
               TextField(
                 enableIMEPersonalizedLearning: false,
                 textCapitalization: TextCapitalization.characters,
+                style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   //contentPadding: EdgeInsets.all(20.0), //Padding
                   //Fondo
@@ -104,6 +105,7 @@ class _SignUpState extends State<SignUp> {
               TextField(
                 enableIMEPersonalizedLearning: false,
                 textCapitalization: TextCapitalization.characters,
+                style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   //contentPadding: EdgeInsets.all(20.0), //Padding
                   filled: true,
@@ -145,6 +147,7 @@ class _SignUpState extends State<SignUp> {
                 enableIMEPersonalizedLearning: false,
                 obscureText: true,
                 textCapitalization: TextCapitalization.characters,
+                style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Color.fromRGBO(33, 46, 54, 1),
