@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:app_cine/paginas/home.dart';
 import 'package:flutter/material.dart';
 import 'package:app_cine/paginas/signIn.dart';
 import 'package:app_cine/paginas/signUp.dart';
-import 'package:app_cine/paginas/home.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,9 +1,10 @@
 // ignore: file_names
 // ignore_for_file: prefer_const_constructors, avoid_print, file_names, duplicate_ignore
 
-import 'package:app_cine/paginas/home.dart';
 import 'package:app_cine/paginas/signUp.dart';
 import 'package:flutter/material.dart';
+
+import 'home.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
