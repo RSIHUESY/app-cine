@@ -19,9 +19,9 @@ class _HomeState extends State<Home> {
     "Peliculas en estreno".toUpperCase(),
   ];
   final List<Widget> _pages = [
-    BodyShopping(),
-    BodyHome(),
-    BodyPremiere(),
+    BodyShopping(), //0
+    BodyHome(), //1
+    BodyPremiere(), //2
   ];
   int _actualPage = 1;
 
