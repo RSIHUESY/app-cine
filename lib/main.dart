@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors
-
+import 'package:app_cine/paginas/bodyHome.dart';
 import 'package:app_cine/paginas/home.dart';
 import 'package:flutter/material.dart';
 import 'package:app_cine/paginas/signIn.dart';
