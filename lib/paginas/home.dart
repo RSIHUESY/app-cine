@@ -1,9 +1,17 @@
 // ignore: file_names
 // ignore_for_file: prefer_const_constructors, avoid_print, file_names, duplicate_ignore
+
 import 'package:app_cine/paginas/bodyHome.dart';
 import 'package:app_cine/paginas/bodyPremiere.dart';
 import 'package:app_cine/paginas/bodyShopping.dart';
+import 'package:app_cine/paginas/menuDrawer/bodyPerfil.dart';
+import 'package:app_cine/paginas/signIn.dart';
 import 'package:flutter/material.dart';
+
+import 'menuDrawer/bodyConfig.dart';
+import 'menuDrawer/bodyContactUs.dart';
+import 'menuDrawer/bodyPromotions.dart';
+import 'menuDrawer/bodySocial.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -13,17 +21,50 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int _actualPageInBottomNavigation = 1;
+  int _actualPageInDrawer = -1;
+  int _actualPage = 1;
   final List<String> _tittles = [
     "mis compras".toUpperCase(),
     "peliculas en cartelera".toUpperCase(),
     "Peliculas en estreno".toUpperCase(),
+    "mi perfil".toUpperCase(),
+    "promociones".toUpperCase(),
+    "redes sociales".toUpperCase(),
+    "contactanos".toUpperCase(),
+    "configuracion".toUpperCase(),
   ];
-  final List<Widget> _pages = [
-    BodyShopping(), //0
-    BodyHome(), //1
-    BodyPremiere(), //2
-  ];
-  int _actualPage = 1;
+
+  _pages(int pos) {
+    switch (pos) {
+      case 0:
+        return BodyShopping();
+      case 1:
+        return BodyHome();
+      case 2:
+        return BodyPremiere();
+      case 3:
+        return BodyPerfil();
+      case 4:
+        return BodyPromotions();
+      case 5:
+        return BodySocial();
+      case 6:
+        return BodyContactUs();
+      case 7:
+        return BodyConfig();
+    }
+  }
+
+  _selectPosInDrawer(int pos) {
+    setState(() {
+      _actualPageInBottomNavigation = 1;
+      _actualPageInDrawer = pos;
+      _actualPage = pos;
+    });
+    //PARA EL CIERRE AUTOMATICO DEL MENU LATERAL
+    Navigator.of(context).pop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +121,8 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-              //Perfil
+
+              //PERFIL
               ListTile(
                 textColor: Color.fromRGBO(239, 243, 245, 1),
                 leading: Icon(
@@ -88,9 +130,11 @@ class _HomeState extends State<Home> {
                   color: Color.fromRGBO(239, 243, 245, 1),
                 ),
                 title: Text('Perfil'),
-                onTap: () {},
+                selected: (_actualPageInDrawer == 3),
+                onTap: () => {_selectPosInDrawer(3)},
               ),
-              //Promociones
+
+              //PROMOCIONES
               ListTile(
                 textColor: Color.fromRGBO(239, 243, 245, 1),
                 leading: Icon(
@@ -98,9 +142,11 @@ class _HomeState extends State<Home> {
                   color: Color.fromRGBO(239, 243, 245, 1),
                 ),
                 title: Text('Promociones'),
-                onTap: () {},
+                selected: (_actualPageInDrawer == 4),
+                onTap: () => {_selectPosInDrawer(4)},
               ),
-              //Siguenos
+
+              //SIGUENOS
               ListTile(
                 textColor: Color.fromRGBO(239, 243, 245, 1),
                 leading: Icon(
@@ -108,8 +154,11 @@ class _HomeState extends State<Home> {
                   color: Color.fromRGBO(239, 243, 245, 1),
                 ),
                 title: Text('Siguenos'),
-                onTap: () {},
+                selected: (_actualPageInDrawer == 5),
+                onTap: () => {_selectPosInDrawer(5)},
               ),
+
+              //CONTACTANOS
               ListTile(
                 textColor: Color.fromRGBO(239, 243, 245, 1),
                 leading: Icon(
@@ -117,28 +166,43 @@ class _HomeState extends State<Home> {
                   color: Color.fromRGBO(239, 243, 245, 1),
                 ),
                 title: Text('Contáctanos'),
-                onTap: () {},
+                selected: (_actualPageInDrawer == 6),
+                onTap: () => {_selectPosInDrawer(6)},
               ),
-              //Configuracion
-              Container(
-                transformAlignment: Alignment.bottomCenter,
-                child: ListTile(
-                  textColor: Color.fromRGBO(239, 243, 245, 1),
-                  dense: true,
-                  leading: Icon(
-                    Icons.settings,
-                    color: Color.fromRGBO(239, 243, 245, 1),
-                  ),
-                  title: Text('Configuración'),
-                  onTap: () {},
+
+              //CONFIGURACION
+              ListTile(
+                textColor: Color.fromRGBO(239, 243, 245, 1),
+                leading: Icon(
+                  Icons.settings,
+                  color: Color.fromRGBO(239, 243, 245, 1),
                 ),
+                title: Text('Configuración'),
+                selected: (_actualPageInDrawer == 7),
+                onTap: () => {_selectPosInDrawer(7)},
               ),
+
+              //SALIR
+              ListTile(
+                textColor: Color.fromRGBO(239, 243, 245, 1),
+                leading: Icon(
+                  Icons.exit_to_app,
+                  color: Color.fromRGBO(239, 243, 245, 1),
+                ),
+                title: Text('Salir'),
+                onTap: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignIn()),
+                  ),
+                },
+              )
             ],
           ),
         ),
 
         //CONTENIDO
-        body: _pages[_actualPage],
+        body: _pages(_actualPage),
 
         //MENU INFERIOR
         bottomNavigationBar: BottomNavigationBar(
@@ -147,10 +211,12 @@ class _HomeState extends State<Home> {
           fixedColor: Colors.red,
           onTap: (index) {
             setState(() {
+              _actualPageInBottomNavigation = index;
+              _actualPageInDrawer = -1;
               _actualPage = index;
             });
           },
-          currentIndex: _actualPage,
+          currentIndex: _actualPageInBottomNavigation,
           items: const [
             //Compras
             BottomNavigationBarItem(

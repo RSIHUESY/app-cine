@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:app_cine/paginas/home.dart';
+import 'package:app_cine/paginas/movies/moviesHome.dart';
 import 'package:flutter/material.dart';
 import 'package:app_cine/paginas/signIn.dart';
 import 'package:app_cine/paginas/signUp.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         'SignIn': (BuildContext context) => SignIn(),
         'SignUp': (BuildContext context) => SignUp(),
         'Home': (BuildContext context) => Home(),
+        MoviesHome.routeName: (context) => MoviesHome(),
       },
       initialRoute: 'SignIn',
     );
