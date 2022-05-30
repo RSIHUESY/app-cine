@@ -8,8 +8,8 @@ import 'package:app_cine/paginas/movies/movie3.dart';
 import 'package:flutter/material.dart';
 
 class MoviesHome extends StatefulWidget {
+  static const routeName = '/MovieHome';
   const MoviesHome({Key? key}) : super(key: key);
-  static const routeName = '/moviesHomeDatos';
   @override
   State<MoviesHome> createState() => _MoviesHomeState();
 }

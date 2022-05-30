@@ -5,7 +5,7 @@ import 'package:app_cine/paginas/bodyHome.dart';
 import 'package:app_cine/paginas/bodyPremiere.dart';
 import 'package:app_cine/paginas/bodyShopping.dart';
 import 'package:app_cine/paginas/menuDrawer/bodyPerfil.dart';
-import 'package:app_cine/paginas/signIn.dart';
+import 'package:app_cine/usuario/signIn.dart';
 import 'package:flutter/material.dart';
 
 import 'menuDrawer/bodyConfig.dart';
@@ -14,6 +14,7 @@ import 'menuDrawer/bodyPromotions.dart';
 import 'menuDrawer/bodySocial.dart';
 
 class Home extends StatefulWidget {
+  static const routeName = 'Home';
   const Home({Key? key}) : super(key: key);
 
   @override
@@ -24,6 +25,7 @@ class _HomeState extends State<Home> {
   int _actualPageInBottomNavigation = 1;
   int _actualPageInDrawer = -1;
   int _actualPage = 1;
+
   final List<String> _tittles = [
     "mis compras".toUpperCase(),
     "peliculas en cartelera".toUpperCase(),

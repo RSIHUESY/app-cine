@@ -7,6 +7,7 @@ import 'package:app_cine/paginas/movies/movie3.dart';
 import 'package:flutter/material.dart';
 
 class BodyHome extends StatefulWidget {
+  static const routeName = 'BodyHome';
   const BodyHome({Key? key}) : super(key: key);
 
   @override
