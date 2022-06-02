@@ -1,7 +1,6 @@
 // ignore_for_file: file_names
 
 import 'package:app_cine/paginas/home.dart';
-import 'package:app_cine/paginas/movies/moviesHome.dart';
 import 'package:flutter/material.dart';
 
 class RutaInicial {
@@ -10,7 +9,7 @@ class RutaInicial {
       return MaterialPageRoute(
         builder: (context) => const Home(),
       );
-    } else if (settings.name == MoviesHome.routeName) {
+    } else if (settings.name == Home.routeName) {
       return MaterialPageRoute(
         builder: (context) => const Home(),
       );
