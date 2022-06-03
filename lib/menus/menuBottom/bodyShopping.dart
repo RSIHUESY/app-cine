@@ -1,5 +1,4 @@
-// ignore: file_names
-// ignore_for_file: prefer_const_constructors, avoid_print, file_names, duplicate_ignore
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 
 class BodyShopping extends StatefulWidget {
@@ -15,18 +14,52 @@ class _BodyShoppingState extends State<BodyShopping> {
 
   @override
   Widget build(BuildContext context) {
+    var mediaQuery = MediaQuery.of(context);
+    Size size = mediaQuery.size;
+
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(25, 34, 41, 1),
+        backgroundColor: const Color.fromRGBO(25, 34, 41, 1),
         //CONTENIDO
-        body: Center(
-          child: ListView(
-            padding: EdgeInsets.symmetric(
-              horizontal: 25.0,
-              vertical: 10.0,
+        body: ListView(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 25.0,
+            vertical: 10.0,
+          ),
+          children: <Widget>[
+            Container(
+              height: size.height * 0.6,
+              padding: const EdgeInsets.all(15),
+              child: Column(
+                children: [
+                  Text(
+                    "Nada por aquí",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 178, 178, 178),
+                      fontSize: size.height / 14,
+                    ),
+                  ),
+                  const Divider(height: 5),
+                  const Icon(
+                    Icons.sentiment_neutral_outlined,
+                    color: Color.fromRGBO(178, 178, 178, 1),
+                    size: 150,
+                  ),
+                  const Divider(height: 20),
+                  Text(
+                    "Las peliculas que compres las visualizaras aquí",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 178, 178, 178),
+                      fontSize: size.height / 40,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            children: <Widget>[
-              Column(
+
+            /* Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   //PELICULA 1
@@ -106,9 +139,8 @@ class _BodyShoppingState extends State<BodyShopping> {
                     ),
                   ),
                 ],
-              )
-            ],
-          ),
+              )*/
+          ],
         ),
       ),
     );
