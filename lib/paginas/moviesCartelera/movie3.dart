@@ -1,6 +1,4 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
-
 import 'movieEstructura.dart';
 
 class Movie3 extends StatefulWidget {
@@ -19,6 +17,7 @@ class _Movie3State extends State<Movie3> {
     MovieEstructura movie3 = MovieEstructura(
       3,
       size,
+      context,
       'images/Pelicula3.jpg',
       'sonic 2: la pelicula',
       'Benedict Cumberbatch, Elizabeth Olsen, Chiwetel Ejiofor, Benedict Wong, Xochitl Gomez, Michael Stuhlbarg, Rachel McAdams, Patrick Stewart.',
@@ -30,7 +29,7 @@ class _Movie3State extends State<Movie3> {
         //CONTENIDO
         body: ListView(
           children: [
-            movie3.mostrarMovie(),
+            movie3.mostrarMovie(3),
           ],
         ),
       ),

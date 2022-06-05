@@ -1,9 +1,10 @@
-// ignore: file_names
-// ignore_for_file: prefer_const_constructors, avoid_print, file_names, duplicate_ignore
+// ignore_for_file: file_names
 
-import 'package:app_cine/paginas/movies/movie1.dart';
-import 'package:app_cine/paginas/movies/movie2.dart';
-import 'package:app_cine/paginas/movies/movie3.dart';
+import 'package:app_cine/paginas/moviesComprar/movies/movies_page.dart';
+
+// import '../../paginas/moviesCartelera/movie1.dart';
+// import '../../paginas/moviesCartelera/movie2.dart';
+// import '../../paginas/moviesCartelera/movie3.dart';
 import 'package:flutter/material.dart';
 
 class BodyHome extends StatefulWidget {
@@ -15,31 +16,18 @@ class BodyHome extends StatefulWidget {
 }
 
 class _BodyHomeState extends State<BodyHome> {
-  // _selectMovie(int pos) {
-  //   Navigator.push(
-  //       context,
-  //       MaterialPageRoute(
-  //         builder: (context) => MoviesHome(),
-  //         settings: RouteSettings(arguments: Datos(pos)),
-  //       ));
-  // }
-
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      physics: BouncingScrollPhysics(),
-      scrollDirection: Axis.horizontal,
-      children: const <Widget>[
-        Movie1(),
-        Movie2(),
-        Movie3(),
-      ],
-    );
+    return const MoviesPage();
+    // return PageView(
+    //   clipBehavior: Clip.antiAlias,
+    //   physics: const BouncingScrollPhysics(),
+    //   scrollDirection: Axis.horizontal,
+    //   children: const <Widget>[
+    //     Movie1(),
+    //     Movie2(),
+    //     Movie3(),
+    //   ],
+    // );
   }
-}
-
-class Datos {
-  final int index;
-
-  Datos(this.index);
 }

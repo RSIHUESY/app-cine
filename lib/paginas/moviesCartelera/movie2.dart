@@ -1,6 +1,6 @@
 // ignore: file_names
-import 'package:app_cine/paginas/movies/movieEstructura.dart';
 import 'package:flutter/material.dart';
+import 'movieEstructura.dart';
 
 class Movie2 extends StatefulWidget {
   const Movie2({Key? key}) : super(key: key);
@@ -18,6 +18,7 @@ class _Movie2State extends State<Movie2> {
     MovieEstructura movie2 = MovieEstructura(
       2,
       size,
+      context,
       'images/Pelicula2.jpg',
       'animales fantasticos: los secretos de dumbledore',
       'Benedict Cumberbatch, Elizabeth Olsen, Chiwetel Ejiofor, Benedict Wong, Xochitl Gomez, Michael Stuhlbarg, Rachel McAdams, Patrick Stewart.',
@@ -29,7 +30,7 @@ class _Movie2State extends State<Movie2> {
         //CONTENIDO
         body: ListView(
           children: [
-            movie2.mostrarMovie(),
+            movie2.mostrarMovie(3),
           ],
         ),
       ),

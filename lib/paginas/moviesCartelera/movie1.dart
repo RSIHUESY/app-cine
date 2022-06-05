@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'movieEstructura.dart';
 
 class Movie1 extends StatefulWidget {
@@ -18,6 +17,7 @@ class _Movie1State extends State<Movie1> {
     MovieEstructura movie1 = MovieEstructura(
       1,
       size,
+      context,
       'images/Pelicula1.jpg',
       'doctor strange en el multiverso de la locura',
       'Benedict Cumberbatch, Elizabeth Olsen, Chiwetel Ejiofor, Benedict Wong, Xochitl Gomez, Michael Stuhlbarg, Rachel McAdams, Patrick Stewart.',
@@ -29,7 +29,7 @@ class _Movie1State extends State<Movie1> {
         //CONTENIDO
         body: ListView(
           children: [
-            movie1.mostrarMovie(),
+            movie1.mostrarMovie(1),
           ],
         ),
       ),

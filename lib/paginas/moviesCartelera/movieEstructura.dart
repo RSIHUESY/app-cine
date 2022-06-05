@@ -1,18 +1,18 @@
 // ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 
 class MovieEstructura {
   late int id;
   late Size size;
+  late BuildContext context;
   late String imgRuta;
   late String nameMovie;
   late String descMovie;
 
-  MovieEstructura(
-      this.id, this.size, this.imgRuta, this.nameMovie, this.descMovie);
+  MovieEstructura(this.id, this.size, this.context, this.imgRuta,
+      this.nameMovie, this.descMovie);
 
-  mostrarMovie() {
+  mostrarMovie(pos) {
     return Container(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -92,23 +92,34 @@ class MovieEstructura {
             ),
           ),
 
-          //BOTON MAS INFORMACION
-          SizedBox(
-            child: TextButton(
-              onPressed: () {},
-              child: const Text("COMPRAR"),
-              style: TextButton.styleFrom(
-                backgroundColor: const Color.fromRGBO(164, 23, 32, 1),
-                primary: const Color.fromARGB(255, 224, 229, 233),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: const BorderSide(
-                    color: Color.fromRGBO(180, 49, 58, 1),
-                  ),
+          //BOTON COMPRAR
+          TextButton(
+            child: const Text("COMPRAR"),
+            style: TextButton.styleFrom(
+              backgroundColor: const Color.fromRGBO(164, 23, 32, 1),
+              primary: const Color.fromARGB(255, 224, 229, 233),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+                side: const BorderSide(
+                  color: Color.fromRGBO(180, 49, 58, 1),
                 ),
               ),
             ),
-          )
+            onPressed: () {
+              const transicion = Duration(seconds: 3);
+              Navigator.of(context).push(
+                PageRouteBuilder(
+                  transitionDuration: transicion,
+                  reverseTransitionDuration: transicion,
+                  pageBuilder: (_, animacion, __) {
+                    return FadeTransition(
+                      opacity: animacion,
+                    );
+                  },
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
