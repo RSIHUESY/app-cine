@@ -26,11 +26,11 @@ class _BookingPageState extends State<BookingPage>
   void initState() {
     _controller = BookingPageAnimationController(
       buttonController: AnimationController(
-        duration: const Duration(milliseconds: 750),
+        duration: const Duration(milliseconds: 700),
         vsync: this,
       ),
       contentController: AnimationController(
-        duration: const Duration(milliseconds: 750),
+        duration: const Duration(milliseconds: 700),
         vsync: this,
       ),
     );
@@ -148,10 +148,10 @@ class _BookingPageState extends State<BookingPage>
               ),
             ),
             Positioned(
-              bottom: h * .05,
+              bottom: h * .045,
               child: const IgnorePointer(
                 child: Text(
-                  'Buy Ticket',
+                  'FINALIZAR COMPRA',
                   style: AppTextStyles.bookButtonTextStyle,
                 ),
               ),

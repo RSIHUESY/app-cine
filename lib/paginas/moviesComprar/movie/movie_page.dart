@@ -42,6 +42,7 @@ class MoviePage extends StatelessWidget {
                   ),
                 ),
 
+                //INFORmACION DE LA PELICULA
                 Positioned(
                   width: w,
                   height: h * .5,
@@ -50,21 +51,26 @@ class MoviePage extends StatelessWidget {
                       const Spacer(),
                       Hero(
                         tag: movie.name,
+
+                        //TITULO
                         child: Material(
                           type: MaterialType.transparency,
                           child: Text(
                             movie.name.toUpperCase(),
                             style: AppTextStyles.movieNameTextStyle,
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ),
-                      OpacityTween(
-                        begin: 0.0,
-                        child: SlideUpTween(
-                          begin: const Offset(-30, 30),
-                          child: MovieStars(stars: movie.stars),
-                        ),
-                      ),
+
+                      //ESTRELLAS
+                      // OpacityTween(
+                      //   begin: 0.0,
+                      //   child: SlideUpTween(
+                      //     begin: const Offset(-30, 30),
+                      //     child: MovieStars(stars: movie.stars),
+                      //   ),
+                      // ),
                       const Spacer(),
                       OpacityTween(
                         child: SlideUpTween(
@@ -79,6 +85,7 @@ class MoviePage extends StatelessWidget {
                           ),
                         ),
                       ),
+
                       const Spacer(),
                       OpacityTween(
                         child: SlideUpTween(

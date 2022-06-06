@@ -86,7 +86,8 @@ final movies = [
     director: 'Ritchie',
     stars: 5,
     actors: [
-      'Jeff Hille',
+      'Benedict Cumberbatch, Elizabeth Olsen, Chiwetel Ejiofor, Benedict Wong, Xochitl Gomez, Michael Stuhlbarg, Rachel McAdams, Patrick Stewart.'
+          'Jeff Hille',
       'Jane Perry',
       'Colm Feore',
       'Isabella Hupper',

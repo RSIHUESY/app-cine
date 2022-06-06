@@ -35,17 +35,20 @@ class AppTextStyles {
   );
 
   static const movieDescriptionStyle = TextStyle(
-    fontSize: 20,
+    color: Colors.white70,
+    fontSize: 18,
     fontWeight: FontWeight.w300,
   );
 
   static const infoTitleStyle = TextStyle(
+    color: Color.fromARGB(255, 229, 229, 229),
     fontSize: 20,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
   );
 
   static const infoContentStyle = TextStyle(
+    color: Color.fromARGB(255, 177, 177, 177),
     fontSize: 20,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w900,
   );
 }
