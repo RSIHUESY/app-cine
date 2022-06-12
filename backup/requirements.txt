@@ -1,0 +1,10 @@
+psycopg2-binary
+pyyaml
+Flask
+PyJWT
+Flask-JWT-Extended
+jsonschema
+culqi
+timedelta
+pycryptodome
+Werkzeug

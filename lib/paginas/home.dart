@@ -61,7 +61,7 @@ class _HomeState extends State<Home> {
       _actualPageInDrawer = pos;
       _actualPage = pos;
     });
-    //PARA EL CIERRE AUTOMATICO DEL MENU LATERAL
+    //PARA EL CIERRE AUTOMATICO DEL MENU LATERAL AL SELECCIONAR UNA
     Navigator.of(context).pop();
   }
 
@@ -96,6 +96,7 @@ class _HomeState extends State<Home> {
                 decoration: const BoxDecoration(
                   color: Color.fromRGBO(164, 23, 32, 1),
                 ),
+
                 //Insertar logo, titulo y avatar
                 child: Column(
                   children: [
