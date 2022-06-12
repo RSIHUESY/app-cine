@@ -81,7 +81,7 @@ class _SignUpState extends State<SignUp> {
               ),
 
               const Divider(height: 10.0),
-              //INGRESAR NOMBRE Y APELLIDOS
+              //INGRESAR NOMBRES
               TextField(
                 controller: _nameSignUp,
                 textCapitalization: TextCapitalization.words,
@@ -93,12 +93,57 @@ class _SignUpState extends State<SignUp> {
                   //Fondo con texto guia
                   filled: true,
                   fillColor: const Color.fromRGBO(33, 46, 54, 1),
-                  labelText: "Nombre y apellido",
+                  labelText: "Nombre(s)",
                   labelStyle: const TextStyle(
                     color: Color.fromRGBO(200, 205, 208, 1),
                   ),
                   //Texto guia al hacer clic en el input
-                  hintText: "Ingresa tu nombre y apellido",
+                  hintText: "Ingresa tu(s) nombre(s)",
+                  hintStyle: const TextStyle(
+                    color: Color.fromRGBO(200, 205, 208, 0.75),
+                  ),
+                  //Icono
+                  iconColor: Colors.white,
+                  suffixIcon: const Icon(
+                    Icons.verified_user_rounded, //Icono de verificado
+                    color: Colors.white,
+                  ),
+                  //Color en inactivo
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: const BorderSide(
+                        color: Color.fromARGB(255, 59, 82, 99), width: 1),
+                  ),
+                  //Color Activado
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: const BorderSide(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                onSubmitted: (valor) {},
+              ),
+
+              const Divider(height: 10.0),
+              //INGRESAR APELLIDOS
+              TextField(
+                controller: _nameSignUp,
+                textCapitalization: TextCapitalization.words,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+                decoration: InputDecoration(
+                  //Fondo con texto guia
+                  filled: true,
+                  fillColor: const Color.fromRGBO(33, 46, 54, 1),
+                  labelText: "Apellido(s)",
+                  labelStyle: const TextStyle(
+                    color: Color.fromRGBO(200, 205, 208, 1),
+                  ),
+                  //Texto guia al hacer clic en el input
+                  hintText: "Ingresa tu(s) apellido(s)",
                   hintStyle: const TextStyle(
                     color: Color.fromRGBO(200, 205, 208, 0.75),
                   ),

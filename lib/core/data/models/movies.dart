@@ -8,7 +8,7 @@ class Movie {
   final String type;
   final int hours;
   final String director;
-  final int stars;
+  // final int stars;
   final List<String> actors;
   final List<MovieDate> dates;
   final List<List<Seat>> seats;
@@ -21,7 +21,7 @@ class Movie {
     required this.type,
     required this.hours,
     required this.director,
-    required this.stars,
+    // required this.stars,
     required this.actors,
     required this.dates,
     required this.seats,

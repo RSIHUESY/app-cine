@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../constants/constants.dart';
-
 import 'models/movies.dart';
 
 final section1 = List.generate(
@@ -84,7 +82,7 @@ final movies = [
     type: 'Fantasy',
     hours: 2,
     director: 'Ritchie',
-    stars: 5,
+    // stars: 5,
     actors: [
       'Benedict Cumberbatch, Elizabeth Olsen, Chiwetel Ejiofor, Benedict Wong, Xochitl Gomez, Michael Stuhlbarg, Rachel McAdams, Patrick Stewart.'
           'Jeff Hille',
@@ -105,7 +103,7 @@ final movies = [
     type: 'Fantasy',
     hours: 2,
     director: 'Ritchie',
-    stars: 5,
+    // stars: 5,
     actors: [
       'Will Smith',
       'Joey Ansah',
@@ -125,7 +123,7 @@ final movies = [
     type: 'Fantasy',
     hours: 2,
     director: 'Ritchie',
-    stars: 5,
+    // stars: 5,
     actors: [
       'Will Smith',
       'Joey Ansah',
