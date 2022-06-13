@@ -1,31 +1,58 @@
+// ignore_for_file: use_rethrow_when_possible
+
 import 'package:flutter/material.dart';
+import '../../constants/imageSize.dart';
+import '../data.dart';
 
 class Movie {
-  final String name;
-  final String image;
-  // final String screenPreview;
-  final String description;
-  final String type;
-  final int hours;
-  final String director;
-  // final int stars;
-  final List<String> actors;
-  final List<MovieDate> dates;
-  final List<List<Seat>> seats;
+  late String name;
+  late String image;
+  // String screenPreview;
+  late String description;
+  late String type;
+  late int hours;
+  late String director;
+  // late int stars;
+  late List<String> actors;
+  late List<MovieDate> date;
+  late List<List<Seat>> seat;
 
-  const Movie({
-    required this.name,
-    required this.image,
-    // required this.screenPreview,
-    required this.description,
-    required this.type,
-    required this.hours,
-    required this.director,
-    // required this.stars,
-    required this.actors,
-    required this.dates,
-    required this.seats,
-  });
+  String getImageUrl() => getImageOriginalUrl(image);
+
+  factory Movie(Map jsonMap) {
+    try {
+      return Movie.deserialize(jsonMap);
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Movie.deserialize(Map json)
+      : // id = json['id'].toInt(),
+        name = json['title'],
+        image = json['backdrop_path'],
+        description = json['overview'],
+        type = "",
+        hours = 0,
+        director = "",
+        // stars = json['vote_count'].toInt(),
+        actors = [],
+        date = dates,
+        seat = seats;
+
+  // const Movie({
+  //   required this.name,
+  //   required this.image,
+  //   // required this.screenPreview,
+  //   required this.description,
+  //   required this.type,
+  //   required this.hours,
+  //   required this.director,
+  //   // required this.stars,
+  //   required this.actors,
+  //   required this.dates,
+  //   required this.seats,
+  // });
 }
 
 class MovieDate {
@@ -61,3 +88,19 @@ class SeatType {
     required this.color,
   });
 }
+
+final seats = [
+  section1,
+  section2,
+  section3,
+  section4,
+  section5,
+  section6,
+];
+
+const dates = [
+  MovieDate(day: 11, month: 'OCT', hour: '6:00PM'),
+  MovieDate(day: 11, month: 'OCT', hour: '8:00PM'),
+  MovieDate(day: 11, month: 'OCT', hour: '9:00PM'),
+  MovieDate(day: 11, month: 'OCT', hour: '10:00PM'),
+];

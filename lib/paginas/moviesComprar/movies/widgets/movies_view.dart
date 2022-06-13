@@ -1,8 +1,13 @@
-import 'dart:ui' as ui;
-import 'package:flutter/material.dart';
+// ignore_for_file: avoid_print
 
+import 'dart:ui' as ui;
+import 'package:app_cine/core/data/controllers/movieController.dart';
+import 'package:app_cine/core/data/models/movies.dart';
+import 'package:flutter/material.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../../../core/data/data.dart';
+import '../../movie/animations/opacity_tween.dart';
+import '../../movie/animations/slide_up_tween.dart';
 import '../../movie/movie_page.dart';
 
 class MoviesView extends StatefulWidget {
@@ -21,6 +26,7 @@ class _MoviesViewState extends State<MoviesView>
   double _movieDetailsPage = 0.0;
   int _movieCardIndex = 0;
   final _showMovieDetails = ValueNotifier(true);
+  List<Movie> _movie = [];
 
   @override
   void initState() {
@@ -28,6 +34,7 @@ class _MoviesViewState extends State<MoviesView>
       ..addListener(_movieCardPagePercentListener);
     _movieDetailPageController = PageController()
       ..addListener(_movieDetailsPagePercentListener);
+    _loadJson();
     super.initState();
   }
 
@@ -47,7 +54,7 @@ class _MoviesViewState extends State<MoviesView>
               child: PageView.builder(
                 controller: _movieCardPageController,
                 clipBehavior: Clip.none,
-                itemCount: movies.length,
+                itemCount: _movie.isEmpty ? _movie.length : 5,
                 onPageChanged: (page) {
                   _movieDetailPageController.animateToPage(
                     page,
@@ -56,7 +63,7 @@ class _MoviesViewState extends State<MoviesView>
                   );
                 },
                 itemBuilder: (_, index) {
-                  final movie = movies[index];
+                  final movie = _movie[index];
                   final progress = (_movieCardPage - index);
                   final scale = ui.lerpDouble(1, .8, progress.abs())!;
                   final isCurrentPage = index == _movieCardIndex;
@@ -92,7 +99,7 @@ class _MoviesViewState extends State<MoviesView>
                         });
                       },
                       child: Hero(
-                        tag: movie.image,
+                        tag: _movie[index].getImageUrl(),
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.easeInOut,
@@ -113,8 +120,8 @@ class _MoviesViewState extends State<MoviesView>
                               ),
                             ],
                             image: DecorationImage(
-                              image: AssetImage(movie.image),
-                              fit: BoxFit.cover,
+                              image: NetworkImage(_movie[index].getImageUrl()),
+                              fit: BoxFit.fitHeight,
                             ),
                           ),
                         ),
@@ -132,9 +139,9 @@ class _MoviesViewState extends State<MoviesView>
               child: PageView.builder(
                 controller: _movieDetailPageController,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: movies.length,
+                itemCount: _movie.isEmpty ? _movie.length : 5,
                 itemBuilder: (_, index) {
-                  final movie = movies[index];
+                  final movie = _movie[index];
                   final opacity = (index - _movieDetailsPage).clamp(0.0, 1.0);
 
                   return ListView(
@@ -148,19 +155,17 @@ class _MoviesViewState extends State<MoviesView>
                             children: [
                               //TITULO
                               Hero(
-                                tag: movie.name,
+                                tag: _movie[index].name,
                                 child: Material(
                                   type: MaterialType.transparency,
                                   child: Text(
-                                    movie.name.toUpperCase(),
+                                    _movie[index].name.toUpperCase(),
                                     style: AppTextStyles.movieNameTextStyle,
                                   ),
                                 ),
                               ),
 
-                              const Divider(
-                                height: 10,
-                              ),
+                              const Divider(height: 10),
                               //DESCRIPCION
                               ValueListenableBuilder<bool>(
                                 valueListenable: _showMovieDetails,
@@ -168,7 +173,7 @@ class _MoviesViewState extends State<MoviesView>
                                   return Visibility(
                                     visible: value,
                                     child: Text(
-                                      movie.actors.join(', '),
+                                      _movie[index].description,
                                       style: AppTextStyles.movieDetails,
                                     ),
                                   );
@@ -202,6 +207,15 @@ class _MoviesViewState extends State<MoviesView>
     });
   }
 
+  _loadJson() async {
+    var data = await MovieController().fetchMovies();
+    print(data);
+    setState(() {
+      _movie.addAll(data);
+      print(data);
+    });
+  }
+
   @override
   void dispose() {
     _movieCardPageController
@@ -210,6 +224,7 @@ class _MoviesViewState extends State<MoviesView>
     _movieDetailPageController
       ..removeListener(_movieDetailsPagePercentListener)
       ..dispose();
+    // _loadJson();
     super.dispose();
   }
 }

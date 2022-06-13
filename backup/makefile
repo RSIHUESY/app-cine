@@ -1,11 +1,11 @@
 SHELL=/bin/sh
 
 source:
-	source ~/backup/Script/activate
+	source backup/Scripts/activate
 	
 run:
 	virtualenv --python python3 \
-		~/envs/backup
+		backup
 	pip install -r requirements.txt
 	python main.py
 

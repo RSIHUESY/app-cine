@@ -37,6 +37,7 @@ class Database:
                 options=options,
                 application_name='app-puntos'
             )
+        
         except Exception as e:
             print('error:', repr(e))
             raise e
@@ -52,9 +53,10 @@ class Database:
                 user=user,
                 password=password,
                 database=database,
-                options=options
+                options=options,
             )
             self._client = pool.getconn()
+        
         except Exception as e:
             print('error:', repr(e))
             raise e
@@ -62,6 +64,7 @@ class Database:
     def disconnect(self):
         if self._client:
             self._client.close()
+        
         if self._cursor:
             self._cursor.close()
 
@@ -75,4 +78,4 @@ class Database:
         self._client.autocommit = False
 
     def set_cursor(self):
-        self._cursor = self._client.cursor(cursor_factory=RealDictCursor)
+        self._cursor = self._client.cursor(cursor_factory = RealDictCursor)

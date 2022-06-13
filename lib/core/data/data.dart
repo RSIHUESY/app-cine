@@ -1,3 +1,4 @@
+// import 'package:app_cine/core/data/controllers/movieController.dart';
 import 'package:flutter/material.dart';
 import '../constants/constants.dart';
 import 'models/movies.dart';
@@ -50,14 +51,14 @@ final section6 = List.generate(
   ),
 );
 
-final seats = [
-  section1,
-  section2,
-  section3,
-  section4,
-  section5,
-  section6,
-];
+// final seats = [
+//   section1,
+//   section2,
+//   section3,
+//   section4,
+//   section5,
+//   section6,
+// ];
 
 const seatTypes = [
   SeatType(name: 'Available', color: Colors.grey),
@@ -65,73 +66,76 @@ const seatTypes = [
   SeatType(name: 'Selection', color: AppColors.primaryColor),
 ];
 
-const dates = [
-  MovieDate(day: 11, month: 'OCT', hour: '6:00PM'),
-  MovieDate(day: 11, month: 'OCT', hour: '8:00PM'),
-  MovieDate(day: 11, month: 'OCT', hour: '9:00PM'),
-  MovieDate(day: 11, month: 'OCT', hour: '10:00PM'),
-];
+// const dates = [
+//   MovieDate(day: 11, month: 'OCT', hour: '6:00PM'),
+//   MovieDate(day: 11, month: 'OCT', hour: '8:00PM'),
+//   MovieDate(day: 11, month: 'OCT', hour: '9:00PM'),
+//   MovieDate(day: 11, month: 'OCT', hour: '10:00PM'),
+// ];
+
+// MovieController moviesList = MovieController();
+// final movies = moviesList.fetchMovies();
 
 final movies = [
-  Movie(
-    name: 'doctor strange en el multiverso de la locura',
-    image: 'images/Pelicula1.jpg',
-    // screenPreview: 'assets/images/greta.jpg',
-    description:
-        'Benedict Cumberbatch, Elizabeth Olsen, Chiwetel Ejiofor, Benedict Wong, Xochitl Gomez, Michael Stuhlbarg, Rachel McAdams, Patrick Stewart.',
-    type: 'Fantasy',
-    hours: 2,
-    director: 'Ritchie',
-    // stars: 5,
-    actors: [
-      'Benedict Cumberbatch, Elizabeth Olsen, Chiwetel Ejiofor, Benedict Wong, Xochitl Gomez, Michael Stuhlbarg, Rachel McAdams, Patrick Stewart.'
-          'Jeff Hille',
-      'Jane Perry',
-      'Colm Feore',
-      'Isabella Hupper',
-      'Stephen Rea',
-    ],
-    dates: dates,
-    seats: seats,
-  ),
-  Movie(
-    name: 'animales fantasticos: los secretos de dumbledore',
-    image: 'images/Pelicula2.jpg',
-    // screenPreview: 'assets/images/aladdin.jpg',
-    description:
-        'Benedict Cumberbatch, Elizabeth Olsen, Chiwetel Ejiofor, Benedict Wong, Xochitl Gomez, Michael Stuhlbarg, Rachel McAdams, Patrick Stewart.',
-    type: 'Fantasy',
-    hours: 2,
-    director: 'Ritchie',
-    // stars: 5,
-    actors: [
-      'Will Smith',
-      'Joey Ansah',
-      'Naomi Scott',
-      'Marwan Kenzari',
-      'Nasim Pedrad',
-    ],
-    dates: dates,
-    seats: seats,
-  ),
-  Movie(
-    name: 'Sonic 2: la pelicula',
-    image: 'images/Pelicula3.jpg',
-    // screenPreview: 'assets/images/aladdin_2.jpg',
-    description:
-        'Benedict Cumberbatch, Elizabeth Olsen, Chiwetel Ejiofor, Benedict Wong, Xochitl Gomez, Michael Stuhlbarg, Rachel McAdams, Patrick Stewart.',
-    type: 'Fantasy',
-    hours: 2,
-    director: 'Ritchie',
-    // stars: 5,
-    actors: [
-      'Will Smith',
-      'Joey Ansah',
-      'Naomi Scott',
-      'Marwan Kenzari',
-      'Nasim Pedrad',
-    ],
-    dates: dates,
-    seats: seats,
-  ),
+  // Movie(
+  //   name: 'doctor strange en el multiverso de la locura',
+  //   image: 'images/Pelicula1.jpg',
+  //   // screenPreview: 'assets/images/greta.jpg',
+  //   description:
+  //       'Benedict Cumberbatch, Elizabeth Olsen, Chiwetel Ejiofor, Benedict Wong, Xochitl Gomez, Michael Stuhlbarg, Rachel McAdams, Patrick Stewart.',
+  //   type: 'Fantasy',
+  //   hours: 2,
+  //   director: 'Ritchie',
+  //   // stars: 5,
+  //   actors: [
+  //     'Benedict Cumberbatch, Elizabeth Olsen, Chiwetel Ejiofor, Benedict Wong, Xochitl Gomez, Michael Stuhlbarg, Rachel McAdams, Patrick Stewart.'
+  //         'Jeff Hille',
+  //     'Jane Perry',
+  //     'Colm Feore',
+  //     'Isabella Hupper',
+  //     'Stephen Rea',
+  //   ],
+  //   dates: dates,
+  //   seats: seats,
+  // ),
+  // Movie(
+  //   name: 'animales fantasticos: los secretos de dumbledore',
+  //   image: 'images/Pelicula2.jpg',
+  //   // screenPreview: 'assets/images/aladdin.jpg',
+  //   description:
+  //       'Benedict Cumberbatch, Elizabeth Olsen, Chiwetel Ejiofor, Benedict Wong, Xochitl Gomez, Michael Stuhlbarg, Rachel McAdams, Patrick Stewart.',
+  //   type: 'Fantasy',
+  //   hours: 2,
+  //   director: 'Ritchie',
+  //   // stars: 5,
+  //   actors: [
+  //     'Will Smith',
+  //     'Joey Ansah',
+  //     'Naomi Scott',
+  //     'Marwan Kenzari',
+  //     'Nasim Pedrad',
+  //   ],
+  //   dates: dates,
+  //   seats: seats,
+  // ),
+  // Movie(
+  //   name: 'Sonic 2: la pelicula',
+  //   image: 'images/Pelicula3.jpg',
+  //   // screenPreview: 'assets/images/aladdin_2.jpg',
+  //   description:
+  //       'Benedict Cumberbatch, Elizabeth Olsen, Chiwetel Ejiofor, Benedict Wong, Xochitl Gomez, Michael Stuhlbarg, Rachel McAdams, Patrick Stewart.',
+  //   type: 'Fantasy',
+  //   hours: 2,
+  //   director: 'Ritchie',
+  //   // stars: 5,
+  //   actors: [
+  //     'Will Smith',
+  //     'Joey Ansah',
+  //     'Naomi Scott',
+  //     'Marwan Kenzari',
+  //     'Nasim Pedrad',
+  //   ],
+  //   dates: dates,
+  //   seats: seats,
+  // ),
 ];
