@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
-import 'signUp.dart';
+import 'package:app_cine/core/data/controllers/loginController.dart';
+import 'package:app_cine/usuario/signUp.dart';
 import 'package:flutter/material.dart';
-
 import '../home.dart';
 
 class SignIn extends StatefulWidget {
@@ -15,8 +15,8 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController _userSignIn = TextEditingController();
-    TextEditingController _passSignIn = TextEditingController();
+    String username = "";
+    String password = "";
 
     return Scaffold(
       backgroundColor: const Color.fromRGBO(25, 34, 41, 1),
@@ -81,7 +81,11 @@ class _SignInState extends State<SignIn> {
               const Divider(height: 20.0),
               //INGRESAR USUARIO
               TextField(
-                controller: _userSignIn,
+                onChanged: (value) {
+                  setState(() {
+                    username = value;
+                  });
+                },
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
@@ -124,7 +128,11 @@ class _SignInState extends State<SignIn> {
               const Divider(height: 10.0),
               //INGRESAR CONTRASEÑA
               TextField(
-                controller: _passSignIn,
+                onChanged: (value) {
+                  setState(() {
+                    password = value;
+                  });
+                },
                 obscureText: true,
                 style: const TextStyle(
                   color: Colors.white,
@@ -168,7 +176,8 @@ class _SignInState extends State<SignIn> {
               //BOTON INGRESAR
               SizedBox(
                 child: TextButton(
-                  onPressed: () {
+                  onPressed: () async {
+                    // await LoginController.login(username, password, context);
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => const Home()),
@@ -210,10 +219,9 @@ class _SignInState extends State<SignIn> {
                     child: TextButton(
                       onPressed: () {
                         Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignUp()),
-                        );
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUp()));
                       },
                       autofocus: false,
                       child: const Text(
@@ -224,9 +232,7 @@ class _SignInState extends State<SignIn> {
                       ),
                       style: TextButton.styleFrom(
                         primary: const Color.fromARGB(255, 0, 0, 255),
-                        textStyle: const TextStyle(
-                          fontSize: 17.0,
-                        ),
+                        textStyle: const TextStyle(fontSize: 17),
                       ),
                     ),
                   ),

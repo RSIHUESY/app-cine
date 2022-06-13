@@ -12,7 +12,6 @@ class UserController(responseController):
         try:
             _model = UserModel()
             _data = _model.get_user()
-            print(_data)
             _status = self.OK
             _message = self.messageOK
 
@@ -21,7 +20,7 @@ class UserController(responseController):
             _message = self.messageInterruption + str(e)
             print('error: '+ str(e))
 
-        return responseEntity(_status,_message,_data).toJSON()
+        return responseEntity(_status, _message,_data).toJSON()
 
     def add_user(self,request):
         _message = None

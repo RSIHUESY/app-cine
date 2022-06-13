@@ -1,6 +1,7 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, avoid_print
 
-import 'signIn.dart';
+import 'package:app_cine/core/data/controllers/loginController.dart';
+import 'package:app_cine/usuario/signIn.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -14,11 +15,11 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController _nameSignUp = TextEditingController();
-    TextEditingController _emailSignUp = TextEditingController();
-    TextEditingController _userSignUp = TextEditingController();
-    TextEditingController _passSignUp = TextEditingController();
-    TextEditingController _passConfirmSignUp = TextEditingController();
+    String names = "";
+    String lastnames = "";
+    String mail = "";
+    String username = "";
+    String password = "";
 
     return Scaffold(
       backgroundColor: const Color.fromRGBO(25, 34, 41, 1),
@@ -83,7 +84,11 @@ class _SignUpState extends State<SignUp> {
               const Divider(height: 10.0),
               //INGRESAR NOMBRES
               TextField(
-                controller: _nameSignUp,
+                onChanged: ((value) {
+                  setState(() {
+                    names = value;
+                  });
+                }),
                 textCapitalization: TextCapitalization.words,
                 style: const TextStyle(
                   color: Colors.white,
@@ -128,7 +133,9 @@ class _SignUpState extends State<SignUp> {
               const Divider(height: 10.0),
               //INGRESAR APELLIDOS
               TextField(
-                controller: _nameSignUp,
+                onChanged: (value) {
+                  lastnames = value;
+                },
                 textCapitalization: TextCapitalization.words,
                 style: const TextStyle(
                   color: Colors.white,
@@ -143,7 +150,7 @@ class _SignUpState extends State<SignUp> {
                     color: Color.fromRGBO(200, 205, 208, 1),
                   ),
                   //Texto guia al hacer clic en el input
-                  hintText: "Ingresa tu(s) apellido(s)",
+                  hintText: "Ejemplo: Sanchez",
                   hintStyle: const TextStyle(
                     color: Color.fromRGBO(200, 205, 208, 0.75),
                   ),
@@ -173,7 +180,9 @@ class _SignUpState extends State<SignUp> {
               const Divider(height: 10.0),
               //INGRESAR CORREO
               TextField(
-                controller: _emailSignUp,
+                onChanged: (value) {
+                  mail = value;
+                },
                 textCapitalization: TextCapitalization.words,
                 style: const TextStyle(
                   color: Colors.white,
@@ -188,7 +197,7 @@ class _SignUpState extends State<SignUp> {
                     color: Color.fromRGBO(200, 205, 208, 1),
                   ),
                   //Texto guia al hacer clic en el input
-                  hintText: "Ingresa un correo electrónico",
+                  hintText: "ejemplo@gmail.com",
                   hintStyle: const TextStyle(
                     color: Color.fromRGBO(200, 205, 208, 0.75),
                   ),
@@ -218,7 +227,9 @@ class _SignUpState extends State<SignUp> {
               const Divider(height: 20.0),
               //INGRESAR USUARIO
               TextField(
-                controller: _userSignUp,
+                onChanged: (value) {
+                  username = value;
+                },
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
@@ -232,7 +243,7 @@ class _SignUpState extends State<SignUp> {
                     color: Color.fromRGBO(200, 205, 208, 1),
                   ),
                   //Texto guia al hacer clic en el input
-                  hintText: "Crea un nombre de usuario",
+                  hintText: "ejemplo123",
                   hintStyle: const TextStyle(
                     color: Color.fromRGBO(200, 205, 208, 0.75),
                   ),
@@ -262,7 +273,9 @@ class _SignUpState extends State<SignUp> {
               const Divider(height: 10.0),
               //INGRESAR CONTRASEÑA
               TextField(
-                controller: _passSignUp,
+                onChanged: (value) {
+                  password = value;
+                },
                 obscureText: true,
                 style: const TextStyle(
                   color: Colors.white,
@@ -277,7 +290,7 @@ class _SignUpState extends State<SignUp> {
                     color: Color.fromRGBO(200, 205, 208, 1),
                   ),
                   //Texto guia al hacer clic en el input
-                  hintText: "Ingresa tu contraseña",
+                  hintText: "6 caracteres mínimo",
                   hintStyle: const TextStyle(
                     color: Color.fromRGBO(200, 205, 208, 0.75),
                   ),
@@ -306,7 +319,15 @@ class _SignUpState extends State<SignUp> {
               const Divider(height: 10.0),
               //CONFIRMAR CONTRASEÑA
               TextField(
-                controller: _passConfirmSignUp,
+                onChanged: (value) {
+                  setState(() {
+                    if (password == value) {
+                      print("Las contraseñas son iguales");
+                    } else {
+                      print("Las contraseñas NO son iguales");
+                    }
+                  });
+                },
                 obscureText: true,
                 style: const TextStyle(
                   color: Colors.white,
@@ -351,16 +372,13 @@ class _SignUpState extends State<SignUp> {
               //BOTON REGISTRARME
               SizedBox(
                 child: TextButton(
-                  onPressed: () => {
-                    if (true)
-                      {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SignIn(),
-                          ),
-                        ),
-                      }
+                  onPressed: () async {
+                    // await LoginController.register(
+                    //     names, lastnames, username, mail, password, context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignIn()));
                   },
                   child: Text("registrarme".toUpperCase()),
                   style: TextButton.styleFrom(

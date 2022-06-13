@@ -2,6 +2,7 @@ import 'package:app_cine/home.dart';
 import 'package:flutter/material.dart';
 import 'package:app_cine/usuario/signIn.dart';
 import 'package:app_cine/usuario/signUp.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         Home.routeName: (context) => const Home(),
       },
       initialRoute: SignIn.routeName,
+      builder: EasyLoading.init(),
     );
   }
 }

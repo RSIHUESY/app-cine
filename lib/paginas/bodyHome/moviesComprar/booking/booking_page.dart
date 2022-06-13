@@ -102,6 +102,7 @@ class _BookingPageState extends State<BookingPage>
                 ),
               ),
             ),
+
             Positioned(
               bottom: 0,
               child: GestureDetector(
@@ -146,6 +147,8 @@ class _BookingPageState extends State<BookingPage>
                 ),
               ),
             ),
+
+            //BOTON FINALIZAR COMPRA
             Positioned(
               bottom: h * .045,
               child: const IgnorePointer(

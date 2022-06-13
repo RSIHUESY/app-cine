@@ -53,7 +53,6 @@ class UserModel(dbModel):
 
     def add_user(self,entity):
         _db = None
-        _data = []
 
         try:
             _db = Database()
