@@ -1,6 +1,6 @@
+import 'package:app_cine/core/constants/app_colors.dart';
+import 'package:app_cine/core/data/models/movies.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/data/models/movies.dart';
 
 class MovieSeatBox extends StatefulWidget {
   const MovieSeatBox({

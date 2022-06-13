@@ -1,8 +1,7 @@
 import 'dart:math' as math;
-
+import 'package:app_cine/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math.dart' as vector;
-import '../../../../core/constants/app_colors.dart';
 import '../animations/animations.dart';
 import '../animations/face_id_animation_controller.dart';
 

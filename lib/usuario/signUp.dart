@@ -98,7 +98,7 @@ class _SignUpState extends State<SignUp> {
                     color: Color.fromRGBO(200, 205, 208, 1),
                   ),
                   //Texto guia al hacer clic en el input
-                  hintText: "Ingresa tu(s) nombre(s)",
+                  hintText: "Ejemplo: Rodrigo",
                   hintStyle: const TextStyle(
                     color: Color.fromRGBO(200, 205, 208, 0.75),
                   ),

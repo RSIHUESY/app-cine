@@ -2,7 +2,7 @@
 import 'signUp.dart';
 import 'package:flutter/material.dart';
 
-import '../paginas/home.dart';
+import '../home.dart';
 
 class SignIn extends StatefulWidget {
   static const routeName = '/sign-in';

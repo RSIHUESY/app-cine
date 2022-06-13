@@ -1,8 +1,7 @@
-import 'package:app_cine/paginas/home.dart';
+import 'package:app_cine/home.dart';
 import 'package:flutter/material.dart';
 import 'package:app_cine/usuario/signIn.dart';
 import 'package:app_cine/usuario/signUp.dart';
-import 'menus/menuBottom/bodyHome.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +23,6 @@ class MyApp extends StatelessWidget {
         SignIn.routeName: (context) => const SignIn(),
         SignUp.routeName: (context) => const SignUp(),
         Home.routeName: (context) => const Home(),
-        BodyHome.routeName: (context) => const BodyHome(),
       },
       initialRoute: SignIn.routeName,
     );

@@ -1,9 +1,8 @@
 // import 'dart:ffi';
 import 'package:app_cine/core/constants/constants.dart';
+import 'package:app_cine/core/data/models/movies.dart';
+import 'package:app_cine/paginas/bodyHome/moviesComprar/booking/booking_page.dart';
 import 'package:flutter/material.dart';
-// import '../../../../core/constants/app_colors.dart';
-import '../../../../core/data/models/movies.dart';
-import '../../booking/booking_page.dart';
 
 class BookButton extends StatelessWidget {
   const BookButton({
