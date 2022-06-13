@@ -1,14 +1,14 @@
 import 'package:app_cine/usuario/signIn.dart';
 import 'package:flutter/material.dart';
 
-import '../menus/menuBottom/bodyShopping.dart';
-import '../menus/menuBottom/bodyHome.dart';
-import '../menus/menuBottom/bodyPremiere.dart';
-import '../menus/menuDrawer/bodyConfig.dart';
-import '../menus/menuDrawer/bodyContactUs.dart';
-import '../menus/menuDrawer/bodyPerfil.dart';
-import '../menus/menuDrawer/bodyPromotions.dart';
-import '../menus/menuDrawer/bodySocial.dart';
+import 'menus/menuBottom/bodyShopping.dart';
+import 'menus/menuBottom/bodyHome.dart';
+import 'menus/menuBottom/bodyPremiere.dart';
+import 'menus/menuDrawer/bodyConfig.dart';
+import 'menus/menuDrawer/bodyContactUs.dart';
+import 'menus/menuDrawer/bodyPerfil.dart';
+import 'menus/menuDrawer/bodyPromotions.dart';
+import 'menus/menuDrawer/bodySocial.dart';
 
 class Home extends StatefulWidget {
   static const routeName = 'Home';

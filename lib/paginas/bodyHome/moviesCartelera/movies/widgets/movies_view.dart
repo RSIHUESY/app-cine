@@ -1,14 +1,11 @@
 // ignore_for_file: avoid_print
 
 import 'dart:ui' as ui;
+import 'package:app_cine/core/constants/app_text_styles.dart';
 import 'package:app_cine/core/data/controllers/movieController.dart';
 import 'package:app_cine/core/data/models/movies.dart';
+import 'package:app_cine/paginas/bodyHome/moviesCartelera/movie/movie_page.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/constants/app_text_styles.dart';
-import '../../../../core/data/data.dart';
-import '../../movie/animations/opacity_tween.dart';
-import '../../movie/animations/slide_up_tween.dart';
-import '../../movie/movie_page.dart';
 
 class MoviesView extends StatefulWidget {
   const MoviesView({Key? key}) : super(key: key);
@@ -26,7 +23,7 @@ class _MoviesViewState extends State<MoviesView>
   double _movieDetailsPage = 0.0;
   int _movieCardIndex = 0;
   final _showMovieDetails = ValueNotifier(true);
-  List<Movie> _movie = [];
+  final List<Movie> _movie = [];
 
   @override
   void initState() {
@@ -155,11 +152,11 @@ class _MoviesViewState extends State<MoviesView>
                             children: [
                               //TITULO
                               Hero(
-                                tag: _movie[index].name,
+                                tag: movie.name,
                                 child: Material(
                                   type: MaterialType.transparency,
                                   child: Text(
-                                    _movie[index].name.toUpperCase(),
+                                    movie.name.toUpperCase(),
                                     style: AppTextStyles.movieNameTextStyle,
                                   ),
                                 ),
@@ -173,7 +170,7 @@ class _MoviesViewState extends State<MoviesView>
                                   return Visibility(
                                     visible: value,
                                     child: Text(
-                                      _movie[index].description,
+                                      movie.description,
                                       style: AppTextStyles.movieDetails,
                                     ),
                                   );

@@ -20,8 +20,8 @@ class MovieController {
       endPoint,
       {
         'api_key': apiKey,
-        'page': '1',
         'language': language,
+        'page': '1',
       },
     );
 

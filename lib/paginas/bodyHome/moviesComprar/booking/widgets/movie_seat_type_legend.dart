@@ -1,5 +1,5 @@
+import 'package:app_cine/core/data/data.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/data/data.dart';
 
 class MovieSeatTypeLegend extends StatelessWidget {
   const MovieSeatTypeLegend({

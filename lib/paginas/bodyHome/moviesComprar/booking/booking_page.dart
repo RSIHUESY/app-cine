@@ -1,8 +1,7 @@
+import 'package:app_cine/core/constants/constants.dart';
+import 'package:app_cine/core/data/models/movies.dart';
+import 'package:app_cine/paginas/bodyHome/moviesComprar/biometrics/custom_biometrics_page.dart';
 import 'package:flutter/material.dart';
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_text_styles.dart';
-import '../../../core/data/models/movies.dart';
-import '../biometrics/custom_biometrics_page.dart';
 import 'animations/animations.dart';
 import 'widgets/widgets.dart';
 

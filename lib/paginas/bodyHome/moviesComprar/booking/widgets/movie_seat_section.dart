@@ -1,5 +1,5 @@
+import 'package:app_cine/core/data/models/movies.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/data/models/movies.dart';
 import 'movie_seat_box.dart';
 
 class MovieSeatSection extends StatelessWidget {

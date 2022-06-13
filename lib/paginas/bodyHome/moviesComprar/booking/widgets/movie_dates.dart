@@ -1,5 +1,5 @@
+import 'package:app_cine/core/data/models/movies.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/data/models/movies.dart';
 import 'movie_date_card.dart';
 
 class MovieDates extends StatefulWidget {
