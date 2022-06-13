@@ -27,7 +27,7 @@ class MovieTeatherScreen extends StatelessWidget {
               Radius.circular(15),
             ),
             image: DecorationImage(
-              image: AssetImage(image),
+              image: NetworkImage(image),
               fit: BoxFit.cover,
             ),
           ),

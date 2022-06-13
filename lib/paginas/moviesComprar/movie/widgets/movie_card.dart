@@ -24,7 +24,7 @@ class MovieCard extends StatelessWidget {
         ],
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage(image),
+          image: NetworkImage(image),
         ),
       ),
     );

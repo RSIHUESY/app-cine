@@ -1,12 +1,9 @@
-from flask import Flask, jsonify, request, render_template,redirect,session
+from flask import Flask, request
 from flask_jwt_extended import (
     # jwt_manager
     JWTManager
 )
-import timedelta
 from src.controllers.userController import UserController
-import os
-import hashlib
 
 app = Flask(__name__)
 app.secret_key = "any random string"

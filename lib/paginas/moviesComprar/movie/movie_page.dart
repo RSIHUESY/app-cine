@@ -37,41 +37,36 @@ class MoviePage extends StatelessWidget {
                   height: h * .6,
                   width: w,
                   child: Hero(
-                    tag: movie.image,
-                    child: MovieCard(image: movie.image),
+                    tag: movie.getImageUrl(),
+                    child: MovieCard(image: movie.getImageUrl()),
                   ),
                 ),
 
-                //INFORmACION DE LA PELICULA
+                //INFORMACION DE LA PELICULA
                 Positioned(
                   width: w,
                   height: h * .5,
                   child: Column(
                     children: [
                       const Spacer(),
-                      Hero(
-                        tag: movie.name,
-
-                        //TITULO
-                        child: Material(
-                          type: MaterialType.transparency,
-                          child: Text(
-                            movie.name.toUpperCase(),
-                            style: AppTextStyles.movieNameTextStyle,
-                            textAlign: TextAlign.center,
+                      //TITULO
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Hero(
+                          tag: movie.name,
+                          child: Material(
+                            type: MaterialType.transparency,
+                            child: Text(
+                              movie.name.toUpperCase(),
+                              style: AppTextStyles.movieNameTextStyle,
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
                       ),
 
-                      //ESTRELLAS
-                      // OpacityTween(
-                      //   begin: 0.0,
-                      //   child: SlideUpTween(
-                      //     begin: const Offset(-30, 30),
-                      //     child: MovieStars(stars: movie.stars),
-                      //   ),
-                      // ),
-                      const Spacer(),
+                      const Divider(height: 10),
+                      //DESCRIPTION
                       OpacityTween(
                         child: SlideUpTween(
                           begin: const Offset(0, 200),
@@ -80,26 +75,19 @@ class MoviePage extends StatelessWidget {
                             child: Text(
                               movie.description,
                               style: AppTextStyles.movieDescriptionStyle,
-                              textAlign: TextAlign.center,
+                              textAlign: TextAlign.start,
+                              maxLines: 8,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ),
                       ),
-
-                      const Spacer(),
-                      OpacityTween(
-                        child: SlideUpTween(
-                          begin: const Offset(0, 200),
-                          duration: const Duration(milliseconds: 850),
-                          child: MovieInfoTable(movie: movie),
-                        ),
-                      ),
-                      const Spacer(flex: 5)
+                      const Spacer(flex: 3)
                     ],
                   ),
                 ),
 
-                //DESCRIPCION
+                //BUTTON
                 Positioned(
                   bottom: h * .03,
                   height: h * .06,
@@ -111,22 +99,6 @@ class MoviePage extends StatelessWidget {
                     ),
                   ),
                 ),
-
-                //BOTON COMPRAR
-                // Positioned(
-                //   bottom: h * .05,
-                //   child: const OpacityTween(
-                //     child: SlideUpTween(
-                //       begin: Offset(-30, 60),
-                //       child: IgnorePointer(
-                //         child: Text(
-                //           'COMPRAR',
-                //           style: AppTextStyles.bookButtonTextStyle,
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),

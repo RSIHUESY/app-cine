@@ -22,18 +22,6 @@ class _MoviesPageState extends State<MoviesPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   bottom: TabBar(
-      //     controller: _tabController,
-      //     isScrollable: true,
-      //     indicator: const DotIndicator(),
-      //     tabs: const [
-      //       Tab(text: 'Movie'),
-      //       Tab(text: 'Series'),
-      //       Tab(text: 'TV Show'),
-      //     ],
-      //   ),
-      // ),
       body: Container(
         decoration: const BoxDecoration(
           color: Color.fromRGBO(25, 34, 41, 1),

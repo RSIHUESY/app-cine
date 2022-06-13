@@ -17,14 +17,14 @@ class AppTextStyles {
 
   static const movieNameTextStyle = TextStyle(
     color: Colors.white,
-    fontSize: 25,
+    fontSize: 22,
     fontWeight: FontWeight.bold,
   );
 
   static const movieDetails = TextStyle(
     color: Colors.white70,
     // height: 1.5,
-    fontSize: 16,
+    fontSize: 14,
   );
 
   static const bookButtonTextStyle = TextStyle(

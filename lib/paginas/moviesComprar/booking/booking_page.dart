@@ -72,7 +72,7 @@ class _BookingPageState extends State<BookingPage>
                       animation: _controller.topOpacityAnimation,
                       child: SizedBox(
                         height: h * .075,
-                        child: MovieDates(dates: widget.movie.dates),
+                        child: MovieDates(dates: widget.movie.date),
                       ),
                     ),
                     const Spacer(),
@@ -82,7 +82,7 @@ class _BookingPageState extends State<BookingPage>
                         height: h * .2,
                         width: w,
                         child: MovieTeatherScreen(
-                          image: widget.movie.image,
+                          image: widget.movie.getImageUrl(),
                           maxHeigth: h,
                           maxWidth: w,
                         ),
@@ -91,7 +91,7 @@ class _BookingPageState extends State<BookingPage>
                     SizedBox(height: h * 0.01),
                     CustomAnimatedOpacity(
                       animation: _controller.bottomOpacityAnimation,
-                      child: MovieSeats(seats: widget.movie.seats),
+                      child: MovieSeats(seats: widget.movie.seat),
                     ),
                     const Spacer(),
                     CustomAnimatedOpacity(
