@@ -1,4 +1,4 @@
-import 'package:app_cine/usuario/signIn.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'menus/menuBottom/bodyShopping.dart';
@@ -190,12 +190,7 @@ class _HomeState extends State<Home> {
                   color: Color.fromRGBO(239, 243, 245, 1),
                 ),
                 title: const Text('Salir de mi cuenta'),
-                onTap: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SignIn()),
-                  ),
-                },
+                onTap: () => FirebaseAuth.instance.signOut(),
               )
             ],
           ),

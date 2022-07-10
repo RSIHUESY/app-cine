@@ -1,21 +1,38 @@
-// ignore_for_file: file_names
-import 'package:app_cine/core/data/controllers/loginController.dart';
-import 'package:app_cine/usuario/signUp.dart';
+// ignore_for_file: file_names, unused_local_variable, avoid_print
+import 'package:app_cine/main.dart';
+import 'package:app_cine/usuario/forgotPasswrodPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../home.dart';
 
 class SignIn extends StatefulWidget {
   static const routeName = '/sign-in';
-  const SignIn({Key? key}) : super(key: key);
+  final VoidCallback onClickedSignUp;
+
+  const SignIn({
+    Key? key,
+    required this.onClickedSignUp,
+  }) : super(key: key);
 
   @override
   State<SignIn> createState() => _SignInState();
 }
 
 class _SignInState extends State<SignIn> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    String username = "";
+    String email = "";
     String password = "";
 
     return Scaffold(
@@ -79,11 +96,12 @@ class _SignInState extends State<SignIn> {
               ),
 
               const Divider(height: 20.0),
-              //INGRESAR USUARIO
+              //INGRESAR EMAIL
               TextField(
+                controller: emailController,
                 onChanged: (value) {
                   setState(() {
-                    username = value;
+                    email = value;
                   });
                 },
                 style: const TextStyle(
@@ -94,12 +112,12 @@ class _SignInState extends State<SignIn> {
                   //Fondo con texto guia
                   filled: true,
                   fillColor: const Color.fromRGBO(33, 46, 54, 1),
-                  labelText: "usuario".toUpperCase(),
+                  labelText: "correo".toUpperCase(),
                   labelStyle: const TextStyle(
                     color: Color.fromRGBO(200, 205, 208, 1),
                   ),
                   //Texto guia al hacer clic en el input
-                  hintText: "Ingresa tu nombre de usuario",
+                  hintText: "Ingresa tu correo",
                   hintStyle: const TextStyle(
                     color: Color.fromRGBO(200, 205, 208, 0.75),
                   ),
@@ -128,6 +146,7 @@ class _SignInState extends State<SignIn> {
               const Divider(height: 10.0),
               //INGRESAR CONTRASEÑA
               TextField(
+                controller: passwordController,
                 onChanged: (value) {
                   setState(() {
                     password = value;
@@ -176,12 +195,8 @@ class _SignInState extends State<SignIn> {
               //BOTON INGRESAR
               SizedBox(
                 child: TextButton(
-                  onPressed: () async {
-                    // await LoginController.login(username, password, context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Home()),
-                    );
+                  onPressed: () {
+                    signIn();
                   },
                   child: Text("ingresar".toUpperCase()),
                   style: TextButton.styleFrom(
@@ -201,47 +216,66 @@ class _SignInState extends State<SignIn> {
               ),
 
               const Divider(height: 10.0),
+              GestureDetector(
+                child: const Text(
+                  "¿Olvidaste tu contraseña?",
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    color: Color.fromARGB(255, 0, 0, 255),
+                  ),
+                ),
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ForgotPasswordPage(),
+                  ),
+                ),
+              ),
+
+              const Divider(height: 10.0),
               //BOTON REGISTRARSE
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  //Pregunta
-                  const Text(
-                    "¿No tienes cuenta?",
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Color.fromRGBO(200, 205, 208, 1),
-                    ),
+              RichText(
+                text: TextSpan(
+                  style: const TextStyle(
+                    color: Color.fromRGBO(200, 205, 208, 1),
+                    fontSize: 14,
                   ),
-                  //Boton Registrarme
-                  SizedBox(
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SignUp()));
-                      },
-                      autofocus: false,
-                      child: const Text(
-                        "Registrarme",
-                        style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            decorationThickness: 2),
-                      ),
-                      style: TextButton.styleFrom(
-                        primary: const Color.fromARGB(255, 0, 0, 255),
-                        textStyle: const TextStyle(fontSize: 17),
+                  text: "¿No tienes cuentas?  ",
+                  children: [
+                    TextSpan(
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = widget.onClickedSignUp,
+                      text: "Registrarme",
+                      style: const TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color.fromARGB(255, 0, 0, 255),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           )
         ],
       ),
     );
+  }
+
+  Future signIn() async {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => const Center(child: CircularProgressIndicator()),
+    );
+
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
+
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }

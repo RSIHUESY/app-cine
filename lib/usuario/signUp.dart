@@ -1,23 +1,34 @@
-// ignore_for_file: file_names, avoid_print
-
-import 'package:app_cine/core/data/controllers/loginController.dart';
-import 'package:app_cine/usuario/signIn.dart';
+// ignore_for_file: file_names, avoid_print, unused_local_variable, non_constant_identifier_names
+import 'package:app_cine/main.dart';
+import 'package:app_cine/usuario/utils.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
   static const routeName = '/sign-up';
-  const SignUp({Key? key}) : super(key: key);
+  final VoidCallback onClickedSignUp;
+
+  const SignUp({
+    Key? key,
+    required this.onClickedSignUp,
+  }) : super(key: key);
 
   @override
   State<SignUp> createState() => _SignUpState();
 }
 
 class _SignUpState extends State<SignUp> {
+  final formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     String names = "";
     String lastnames = "";
-    String mail = "";
+    String email = "";
     String username = "";
     String password = "";
 
@@ -34,6 +45,7 @@ class _SignUpState extends State<SignUp> {
         //CONTENIDO
         children: <Widget>[
           Column(
+            key: formKey,
             children: [
               //LOGO
               Column(
@@ -179,9 +191,10 @@ class _SignUpState extends State<SignUp> {
 
               const Divider(height: 10.0),
               //INGRESAR CORREO
-              TextField(
+              TextFormField(
+                controller: emailController,
                 onChanged: (value) {
-                  mail = value;
+                  email = value;
                 },
                 textCapitalization: TextCapitalization.words,
                 style: const TextStyle(
@@ -221,7 +234,11 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
-                onSubmitted: (valor) {},
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (email) =>
+                    email != null && !EmailValidator.validate(email)
+                        ? 'Ingresa un correo valido'
+                        : null,
               ),
 
               const Divider(height: 20.0),
@@ -272,7 +289,8 @@ class _SignUpState extends State<SignUp> {
 
               const Divider(height: 10.0),
               //INGRESAR CONTRASEÑA
-              TextField(
+              TextFormField(
+                controller: passwordController,
                 onChanged: (value) {
                   password = value;
                 },
@@ -313,21 +331,15 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
-                onSubmitted: (valor) {},
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) => value != null && value.length < 6
+                    ? 'Ingresa minimo 6 caracteres'
+                    : null,
               ),
 
               const Divider(height: 10.0),
               //CONFIRMAR CONTRASEÑA
-              TextField(
-                onChanged: (value) {
-                  setState(() {
-                    if (password == value) {
-                      print("Las contraseñas son iguales");
-                    } else {
-                      print("Las contraseñas NO son iguales");
-                    }
-                  });
-                },
+              TextFormField(
                 obscureText: true,
                 style: const TextStyle(
                   color: Colors.white,
@@ -365,20 +377,17 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
-                onSubmitted: (valor) {},
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) =>
+                    password != value ? 'Las contraseñas no coinciden' : null,
               ),
 
               const Divider(height: 10.0),
               //BOTON REGISTRARME
               SizedBox(
                 child: TextButton(
-                  onPressed: () async {
-                    // await LoginController.register(
-                    //     names, lastnames, username, mail, password, context);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SignIn()));
+                  onPressed: () {
+                    SignUp();
                   },
                   child: Text("registrarme".toUpperCase()),
                   style: TextButton.styleFrom(
@@ -398,10 +407,55 @@ class _SignUpState extends State<SignUp> {
               ),
 
               const Divider(height: 10.0),
+              //BOTON INICIAR SESION
+              RichText(
+                text: TextSpan(
+                  style: const TextStyle(
+                    color: Color.fromRGBO(200, 205, 208, 1),
+                    fontSize: 14,
+                  ),
+                  text: "¿Ya tienes cuentas?  ",
+                  children: [
+                    TextSpan(
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = widget.onClickedSignUp,
+                      text: "Iniciar sesión",
+                      style: const TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color.fromARGB(255, 19, 188, 33),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           )
         ],
       ),
     );
+  }
+
+  Future SignUp() async {
+    // final isValid = formKey.currentState!.validate();
+    // if (isValid) return;
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => const Center(child: CircularProgressIndicator()),
+    );
+
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+    } on FirebaseAuthException catch (e) {
+      print("\n\nerror: $e");
+
+      Utils.showSnackBar(e.message);
+    }
+
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }
